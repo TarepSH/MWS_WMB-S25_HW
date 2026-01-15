@@ -3,7 +3,9 @@
 # تقرير مشروع توصيل الطعام (Flutter + REST) — عربي
 ## فيديو DEMO: 
 
+https://github.com/TarepSH/MWS_WMB-S25_HW/blob/main/Food%20Delivery%20-%20Google%20Chrome%202026-01-15%2022-32-42.mp4 
 
+<video src="https://github.com/TarepSH/MWS_WMB-S25_HW/blob/main/Food%20Delivery%20-%20Google%20Chrome%202026-01-15%2022-32-42.mp4" controls title="Demo video"></video>
 
 ## 1) نظرة عامة
 
