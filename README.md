@@ -1,3 +1,5 @@
+<div dir="rtl" style="text-align: right;">
+
 # تقرير مشروع توصيل الطعام (Flutter + REST) — عربي
 ## فيديو DEMO: 
 
@@ -30,16 +32,22 @@
 ### 2.2 مخطط المعمارية (Chart)
 
 ```mermaid
-flowchart LR
-  U[المستخدم (موبايل/ويب)] -->|واجهة| F[تطبيق Flutter
-  go_router + provider]
-  F -->|HTTP (Dio) + JWT| A[خادم Express REST API]
-  A -->|Prisma ORM| DB[(قاعدة بيانات علائقية
-  SQLite dev.db)]
-  A --> T[محاكاة التتبع
-  (ذاكرة داخلية لكل طلب)]
-```
 
+flowchart LR
+  %% Main flow
+  U[User] -->|UI| F[Flutter App]
+  F -->|HTTP + JWT| A[Express API]
+  A -->|Prisma| DB[SQLite DB]
+  A --> T[Trace Sim]
+
+  %% Legend as disconnected nodes
+  U_desc["User: المستخدم (موبايل/ويب)"]
+  F_desc["Flutter App: تطبيق Flutter مع go_router + provider"]
+  A_desc["Express API: خادم Express REST API"]
+  DB_desc["SQLite DB: قاعدة بيانات علائقية SQLite dev.db"]
+  T_desc["Trace Sim: محاكاة التتبع (ذاكرة داخلية لكل طلب)"]
+
+```
 ### 2.3 المجلدات
 
 - **الخادم:** `backend/`
@@ -298,41 +306,11 @@ flowchart TD
 - SQLite وفّر تشغيلًا مضمونًا على Windows بدون الاعتماد على Docker.
 - التتبع عبر polling يحقق “تحديث شبه لحظي” دون تعقيد WebSockets.
 
-## 10) كيف بنينا هذا الواجب (خطوات العمل)
-
-1. إنشاء مشروع Flutter وإضافة الحزم اللازمة للتنقل وإدارة الحالة.
-2. تنفيذ الشاشات حسب رحلة المستخدم المطلوبة.
-3. إنشاء REST API بواسطة Express وربطه بقاعدة بيانات عبر Prisma.
-4. إنشاء Seed data لتجهيز التطبيق للعرض مباشرة.
-5. حل مشاكل البيئة على Windows:
-
-- عدم استقرار Docker → اعتماد SQLite.
-- تعارض المنفذ 3000 → نقل الخادم إلى 3001 وتحديث Flutter.
-
-6. التحقق النهائي:
-
-- Smoke test للخادم (رحلة كاملة).
-- `flutter test` و `flutter analyze`.
-
----
-
-## جدول تقييم التقرير (حسب المطلوب)
-
-| البند                                   | ممتاز | جيد جداً | جيد | مقبول | ضعيف |
-| --------------------------------------- | ----- | -------- | --- | ----- | ---- |
-| تصميم قاعدة البيانات وتنفيذها           |       |          |     |       |      |
-| إعداد ونشر الـ REST API                 |       |          |     |       |      |
-| تطبيق Flutter (الشاشات والربط)          |       |          |     |       |      |
-| التحقق من الإدخال وتجربة المستخدم UI/UX |       |          |     |       |      |
-| التتبع والتقييم (Tracking/Feedback)     |       |          |     |       |      |
-| جودة التقرير والفيديو                   |       |          |     |       |      |
-
-**ملاحظة:** يمكن للمدرّس وضع علامة (✓) ضمن المستوى المناسب لكل بند.
-
----
 
 **روابط سريعة**
 
 - واجهة API: `http://localhost:3001/`
 - Health: `http://localhost:3001/health`
 - Restaurants: `http://localhost:3001/restaurants`
+
+</div>
